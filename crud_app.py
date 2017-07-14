@@ -62,26 +62,21 @@ elif crud_operation.title() == "Destroy":
 else:
     print("OOPS SORRY. PLEASE TRY AGAIN.")
 
-
-
-
-
-
-
-
-
-#teams = [
-#    {"city": "New York", "name": "Yankees"},
-#    {"city": "New York", "name": "Mets"},
-#    {"city": "Boston", "name": "Red Sox"},
-#    {"city": "New Haven", "name": "Ravens"}
-#]
 #
-#teams_csv = "data/teams.csv"
+# WRITE PRODUCTS TO FILE
 #
-#with open(teams_csv, "w") as csv_file:
-#    writer = csv.DictWriter(csv_file, fieldnames=["city", "name"])
-#    writer.writeheader()
-#
-#    for team in teams:
-#        writer.writerow(team)
+
+with open(products_csv, "w") as csv_file:
+    writer = csv.DictWriter(csv_file, fieldnames=[
+      "product_id",
+      "product_name",
+      "aisle_id",
+      "aisle",
+      "department_id",
+      "department",
+      "price"
+    ])
+    writer.writeheader()
+
+    for product in products:
+        writer.writerow(product)
