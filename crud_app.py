@@ -1,3 +1,5 @@
+#from IPython import embed
+
 #menu = """
 #-----------------------------------
 #PRODUCTS INVENTORY APPLICATION
@@ -24,12 +26,32 @@
 #    print("OOPS SORRY. PLEASE TRY AGAIN.")
 
 
+#csv_path = "data/products.csv"
+#with open(csv_path,'r') as csv:
+#    output = csv.read()
+#    print(type(output))
+#    print(output)
 
 
+#import csv
+#
+#products_csv = "data/products.csv"
+#
+#with open(products_csv, 'r') as csv_file:
+#    rows = csv.reader(csv_file)
+#    print(type(rows))
+#    #print(len(list(rows)))
+#    for row in rows:
+#        print(type(row))
+#        print(row)
 
-csv_path = "data/products.csv"
 
-with open(csv_path,'r') as csv:
-    output = csv.read()
-    print(type(output))
-    print(output)
+import csv
+
+products_csv = "data/products.csv"
+
+with open(products_csv, 'r') as csv_file:
+    reader = csv.DictReader(csv_file) # or if your CSV doesn't have headers use... reader = csv.reader(csv_file)
+    for row in reader:
+        if reader.line_num == 2: print(list(row.keys()))
+        print(row["product_id"])
