@@ -31,7 +31,7 @@ def show_product():
     if product:
         print("READING PRODUCT HERE", product)
     else:
-        print("COULDN'T FIND A PRODUCT WITH IDENTIFIER", product_id)
+        print("COULDN'T FIND A PRODUCT WITH IDENTIFIER", product)
 
 def create_product():
     print("OK. PLEASE PROVIDE THE PRODUCT'S INFORMATION...")
@@ -44,10 +44,22 @@ def create_product():
     print("CREATING PRODUCT HERE", product)
 
 def update_product():
-    print("UPDATING PRODUCT HERE")
+    product_id = input("OK. WHAT IS THE PRODUCT'S ID? ")
+    product = [p for p in products if p["id"] == product_id]
+    if product:
+        print("UPDATING PRODUCT HERE", product)
+        # TODO
+    else:
+        print("COULDN'T FIND A PRODUCT WITH IDENTIFIER", product_id)
 
 def destroy_product():
-    print("DESTROYING PRODUCT HERE")
+    product_id = input("OK. WHAT IS THE PRODUCT'S ID? ")
+    product = [p for p in products if p["id"] == product_id][0]
+    if product:
+        print("DESTROYING PRODUCT HERE", product)
+        del products[products.index(product)]
+    else:
+        print("COULDN'T FIND A PRODUCT WITH IDENTIFIER", product_id)
 
 menu = """
 -----------------------------------
