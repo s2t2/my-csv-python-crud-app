@@ -5,6 +5,8 @@ products_csv = "data/products.csv"
 
 headers = ["id", "name", "aisle", "department", "price"] # for "Further Exploration" use: ["product_id", "product_name", "aisle_id", "aisle_name", "department_id", "department_name", "price"]
 
+user_input_headers = [header for header in headers if header != "id"] # don't prompt the user for the product_id
+
 products = []
 
 #
@@ -27,7 +29,7 @@ def list_products():
 
 def show_product():
     product_id = input("OK. WHAT IS THE PRODUCT'S ID? ")
-    product = [p for p in products if p["id"] == product_id]
+    product = [p for p in products if p["id"] == product_id][0]
     if product:
         print("READING PRODUCT HERE", product)
     else:
@@ -35,20 +37,21 @@ def show_product():
 
 def create_product():
     print("OK. PLEASE PROVIDE THE PRODUCT'S INFORMATION...")
-    product_id = len(products) # auto-increment product identifiers
+    product_id = len(products) # max(product_ids) + 1 # auto-increment product identifiers
     product = {"id": product_id}
-    other_headers = [header for header in headers if header != "id"] # don't prompt the user for the product_id
-    for header in other_headers:
+    for header in user_input_headers:
         product[header] = input("The '{0}' is: ".format(header))
     products.append(product)
     print("CREATING PRODUCT HERE", product)
 
 def update_product():
     product_id = input("OK. WHAT IS THE PRODUCT'S ID? ")
-    product = [p for p in products if p["id"] == product_id]
+    product = [p for p in products if p["id"] == product_id][0]
     if product:
+        print("OK. PLEASE PROVIDE THE PRODUCT'S INFORMATION...")
+        for header in user_input_headers:
+            product[header] = input("Change '{0}' from '{1}' to: ".format(header, product[header]))
         print("UPDATING PRODUCT HERE", product)
-        # TODO
     else:
         print("COULDN'T FIND A PRODUCT WITH IDENTIFIER", product_id)
 
