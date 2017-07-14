@@ -36,7 +36,5 @@ python3 my_app/crud_app.py
 Run tests:
 
 ```shell
-python3 my_app/check_greeter.py
-
 pytest # ...OR... pytest --pdb to drop into an interactive shell upon test failure
 ```
