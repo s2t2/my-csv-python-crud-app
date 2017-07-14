@@ -15,7 +15,14 @@
   + https://github.com/pytest-dev/pytest/
   + https://docs.pytest.org/en/latest/getting-started.html#our-first-test-run
   + https://docs.pytest.org/en/latest/goodpractices.html
+  + https://docs.pytest.org/en/latest/usage.html#dropping-to-pdb-python-debugger-on-failures
 
 ## Setup and Installation
 
   + https://docs.python.org/3/installing/index.html#installing-index
+
+## Packaging
+
+  + https://docs.python.org/3/tutorial/modules.html#packages
+  + https://stackoverflow.com/questions/448271/what-is-init-py-for
+  + https://python-packaging.readthedocs.io/en/latest/minimal.html

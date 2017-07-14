@@ -1,4 +1,7 @@
 
 # locations used by py.test:
 .cache/
-test/__pycache__
+
+my_app/__pycache__
+my_app/tests/__pycache__/
+tests/__pycache__

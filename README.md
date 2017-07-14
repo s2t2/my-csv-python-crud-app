@@ -30,11 +30,13 @@ pip3 install -r requirements.txt
 Run the application:
 
 ```shell
-python3 crud_app.py
+python3 my_app/crud_app.py
 ```
 
 Run tests:
 
 ```shell
-py.test
+python3 my_app/check_greeter.py
+
+pytest # ...OR... pytest --pdb to drop into an interactive shell upon test failure
 ```
