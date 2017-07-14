@@ -8,20 +8,35 @@ products_csv = "data/products.csv"
 #
 
 products = []
+
 with open(products_csv, "r") as csv_file:
     reader = csv.DictReader(csv_file)
     for ordered_dict in reader:
         products.append(dict(ordered_dict))
 
-print(products)
-
 #
 # HANDLE USER INPUT
 #
 
+def create_product():
+    product_id = input("The new product's 'id' is: ")
+    product_id = input("The new product's 'id' is: ")
+    product_id = input("The new product's 'id' is: ")
+    product_id = input("The new product's 'id' is: ")
+    print("CREATING PRODUCT HERE")
+
+def read_product():
+    print("READING PRODUCT HERE")
+
+def update_product():
+    print("UPDATING PRODUCT HERE")
+
+def destroy_product():
+    print("DESTROYING PRODUCT HERE")
+
 menu = """
 -----------------------------------
-PRODUCTS INVENTORY APPLICATION
+PRODUCTS APPLICATION
 -----------------------------------
 
 Welcome {0}!
@@ -38,18 +53,6 @@ There are {1} products in the database.
 Please select an operation: """.format("@s2t2", len(products)) # end of multi- line string. also using string interpolation
 
 crud_operation = input(menu)
-
-def create_product():
-    print("CREATING PRODUCT HERE")
-
-def read_product():
-    print("READING PRODUCT HERE")
-
-def update_product():
-    print("UPDATING PRODUCT HERE")
-
-def destroy_product():
-    print("DESTROYING PRODUCT HERE")
 
 if crud_operation.title() == "Create":
     create_product()
@@ -71,9 +74,9 @@ with open(products_csv, "w") as csv_file:
       "product_id",
       "product_name",
       "aisle_id",
-      "aisle",
+      "aisle_name",
       "department_id",
-      "department",
+      "department_name",
       "price"
     ])
     writer.writeheader()
