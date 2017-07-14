@@ -31,7 +31,12 @@ def create_product():
     print("CREATING PRODUCT HERE", product)
 
 def read_product():
-    print("READING PRODUCT HERE")
+    product_id = input("OK. WHAT IS THE PRODUCT'S ID? ")
+    product = [p for p in products if p["id"] == product_id]
+    if product:
+        print("READING PRODUCT HERE", product)
+    else:
+        print("COULDN'T FIND A PRODUCT WITH IDENTIFIER", product_id)
 
 def update_product():
     print("UPDATING PRODUCT HERE")
