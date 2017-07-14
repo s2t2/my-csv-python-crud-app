@@ -1,35 +1,17 @@
 import csv
 
 products = []
-
-products_csv = "data/products.csv"
+products_csv_file_path = "data/products.csv"
 headers = ["id", "name", "aisle", "department", "price"] # for "Further Exploration" use: ["product_id", "product_name", "aisle_id", "aisle_name", "department_id", "department_name", "price"]
 user_input_headers = [header for header in headers if header != "id"] # don't prompt the user for the product_id
 
-menu = """
------------------------------------
-PRODUCTS APPLICATION
------------------------------------
-
-Welcome @s2t2!
-
-operation | description
---------- | ------------------
-'List'    | Display a list of product identifiers and names.
-'Show'    | Show information about a product.
-'Create'  | Add a new product.
-'Update'  | Edit an existing product.
-'Destroy' | Delete an existing product.
-
-Please select an operation: """ # end of multi- line string
-
-def read_products_from_file():
+def read_products_from_file(products_csv = products_csv_file_path):
     with open(products_csv, "r") as csv_file:
         reader = csv.DictReader(csv_file)
         for ordered_dict in reader:
             products.append(dict(ordered_dict))
 
-def write_products_to_file():
+def write_products_to_file(products_csv = products_csv_file_path):
     with open(products_csv, "w") as csv_file:
         writer = csv.DictWriter(csv_file, fieldnames=headers)
         writer.writeheader()
@@ -82,6 +64,23 @@ def destroy_product():
         del products[products.index(product)]
     else:
         print("COULDN'T FIND A PRODUCT WITH IDENTIFIER", product_id)
+
+menu = """
+-----------------------------------
+PRODUCTS APPLICATION
+-----------------------------------
+
+Welcome @s2t2!
+
+operation | description
+--------- | ------------------
+'List'    | Display a list of product identifiers and names.
+'Show'    | Show information about a product.
+'Create'  | Add a new product.
+'Update'  | Edit an existing product.
+'Destroy' | Delete an existing product.
+
+Please select an operation: """ # end of multi- line string
 
 def run():
     read_products_from_file()
