@@ -48,10 +48,28 @@
 
 import csv
 
-products_csv = "data/products.csv"
+#products_csv = "data/products.csv"
+#
+#with open(products_csv, 'r') as csv_file:
+#    reader = csv.DictReader(csv_file) # or if your CSV doesn't have headers use... reader = csv.reader(csv_file)
+#    for row in reader:
+#        if reader.line_num == 2: print(list(row.keys()))
+#        print(row["product_id"])
 
-with open(products_csv, 'r') as csv_file:
-    reader = csv.DictReader(csv_file) # or if your CSV doesn't have headers use... reader = csv.reader(csv_file)
-    for row in reader:
-        if reader.line_num == 2: print(list(row.keys()))
-        print(row["product_id"])
+
+
+teams = [
+    {"city": "New York", "name": "Yankees"},
+    {"city": "New York", "name": "Mets"},
+    {"city": "Boston", "name": "Red Sox"},
+    {"city": "New Haven", "name": "Ravens"}
+]
+
+teams_csv = "data/teams.csv"
+
+with open(teams_csv, "w") as csv_file:
+    writer = csv.DictWriter(csv_file, fieldnames=["city", "name"])
+    writer.writeheader()
+
+    for team in teams:
+        writer.writerow(team)

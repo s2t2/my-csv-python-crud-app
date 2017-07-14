@@ -6,3 +6,4 @@
   + https://docs.python.org/3/library/csv.html
   + https://stackoverflow.com/a/3428562/670433
   + https://docs.python.org/3/library/csv.html#csv.DictReader
+  + https://docs.python.org/3/library/csv.html#csv.DictWriter
