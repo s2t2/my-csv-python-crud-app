@@ -3,11 +3,21 @@ import csv
 
 products_csv = "data/products.csv"
 
+headers = [
+  "product_id",
+  "product_name",
+  "aisle_id",
+  "aisle_name",
+  "department_id",
+  "department_name",
+  "price"
+]
+
+products = []
+
 #
 # READ PRODUCTS FROM FILE
 #
-
-products = []
 
 with open(products_csv, "r") as csv_file:
     reader = csv.DictReader(csv_file)
@@ -19,10 +29,11 @@ with open(products_csv, "r") as csv_file:
 #
 
 def create_product():
-    product_id = input("The new product's 'id' is: ")
-    product_id = input("The new product's 'id' is: ")
-    product_id = input("The new product's 'id' is: ")
-    product_id = input("The new product's 'id' is: ")
+    print("OK. PLEASE PROVIDE THE PRODUCT'S INFORMATION...")
+    product = {}
+    for header in headers:
+        product[header] = input("The '{0}' is: ".format(header))
+    products.append(product)
     print("CREATING PRODUCT HERE")
 
 def read_product():
@@ -70,15 +81,7 @@ else:
 #
 
 with open(products_csv, "w") as csv_file:
-    writer = csv.DictWriter(csv_file, fieldnames=[
-      "product_id",
-      "product_name",
-      "aisle_id",
-      "aisle_name",
-      "department_id",
-      "department_name",
-      "price"
-    ])
+    writer = csv.DictWriter(csv_file, fieldnames=headers)
     writer.writeheader()
 
     for product in products:
