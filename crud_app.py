@@ -1,13 +1,32 @@
 #from IPython import embed
+import csv
+
+products_csv = "data/products.csv"
+
+#
+# READ PRODUCTS FROM FILE
+#
+
+products = []
+with open(products_csv, "r") as csv_file:
+    reader = csv.DictReader(csv_file)
+    for ordered_dict in reader:
+        products.append(dict(ordered_dict))
+
+print(products)
+
+#
+# HANDLE USER INPUT
+#
 
 menu = """
 -----------------------------------
 PRODUCTS INVENTORY APPLICATION
 -----------------------------------
 
-Welcome @s2t2!
+Welcome {0}!
 
-There are 20 products in the database.
+There are {1} products in the database.
 
     operation | description
     --------- | ------------------
@@ -16,7 +35,7 @@ There are 20 products in the database.
     'Update'  | Edit an existing product.
     'Destroy' | Delete an existing product.
 
-Please select an operation: """ # end of multi- line string
+Please select an operation: """.format("@s2t2", len(products)) # end of multi- line string. also using string interpolation
 
 crud_operation = input(menu)
 
@@ -43,50 +62,26 @@ elif crud_operation.title() == "Destroy":
 else:
     print("OOPS SORRY. PLEASE TRY AGAIN.")
 
-#csv_path = "data/products.csv"
-#with open(csv_path,'r') as csv:
-#    output = csv.read()
-#    print(type(output))
-#    print(output)
 
 
-#import csv
+
+
+
+
+
+
+#teams = [
+#    {"city": "New York", "name": "Yankees"},
+#    {"city": "New York", "name": "Mets"},
+#    {"city": "Boston", "name": "Red Sox"},
+#    {"city": "New Haven", "name": "Ravens"}
+#]
 #
-#products_csv = "data/products.csv"
+#teams_csv = "data/teams.csv"
 #
-#with open(products_csv, 'r') as csv_file:
-#    rows = csv.reader(csv_file)
-#    print(type(rows))
-#    #print(len(list(rows)))
-#    for row in rows:
-#        print(type(row))
-#        print(row)
-
-
-import csv
-
-#products_csv = "data/products.csv"
+#with open(teams_csv, "w") as csv_file:
+#    writer = csv.DictWriter(csv_file, fieldnames=["city", "name"])
+#    writer.writeheader()
 #
-#with open(products_csv, 'r') as csv_file:
-#    reader = csv.DictReader(csv_file) # or if your CSV doesn't have headers use... reader = csv.reader(csv_file)
-#    for row in reader:
-#        if reader.line_num == 2: print(list(row.keys()))
-#        print(row["product_id"])
-
-
-
-teams = [
-    {"city": "New York", "name": "Yankees"},
-    {"city": "New York", "name": "Mets"},
-    {"city": "Boston", "name": "Red Sox"},
-    {"city": "New Haven", "name": "Ravens"}
-]
-
-teams_csv = "data/teams.csv"
-
-with open(teams_csv, "w") as csv_file:
-    writer = csv.DictWriter(csv_file, fieldnames=["city", "name"])
-    writer.writeheader()
-
-    for team in teams:
-        writer.writerow(team)
+#    for team in teams:
+#        writer.writerow(team)
