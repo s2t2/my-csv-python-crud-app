@@ -30,11 +30,13 @@ with open(products_csv, "r") as csv_file:
 
 def create_product():
     print("OK. PLEASE PROVIDE THE PRODUCT'S INFORMATION...")
-    product = {}
-    for header in headers:
+    product_id = len(products) # auto-increment product identifiers
+    product = {"product_id": product_id}
+    other_headers = [header for header in headers if header != "product_id"] # don't prompt the user for the product_id
+    for header in other_headers:
         product[header] = input("The '{0}' is: ".format(header))
     products.append(product)
-    print("CREATING PRODUCT HERE")
+    print("CREATING PRODUCT HERE", product)
 
 def read_product():
     print("READING PRODUCT HERE")
