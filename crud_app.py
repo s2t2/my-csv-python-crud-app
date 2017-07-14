@@ -1,13 +1,17 @@
 #from IPython import embed
 import csv
 
+products = []
+
 products_csv = "data/products.csv"
-
 headers = ["id", "name", "aisle", "department", "price"] # for "Further Exploration" use: ["product_id", "product_name", "aisle_id", "aisle_name", "department_id", "department_name", "price"]
-
 user_input_headers = [header for header in headers if header != "id"] # don't prompt the user for the product_id
 
-products = []
+def get_product_id(product): return int(product["id"])
+
+def auto_incremented_id():
+    product_ids = map(get_product_id, products)
+    return max(product_ids) + 1
 
 #
 # READ PRODUCTS FROM FILE
@@ -37,8 +41,7 @@ def show_product():
 
 def create_product():
     print("OK. PLEASE PROVIDE THE PRODUCT'S INFORMATION...")
-    product_id = len(products) # max(product_ids) + 1 # auto-increment product identifiers
-    product = {"id": product_id}
+    product = {"id": auto_incremented_id() }
     for header in user_input_headers:
         product[header] = input("The '{0}' is: ".format(header))
     products.append(product)
