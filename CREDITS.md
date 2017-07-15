@@ -26,3 +26,5 @@
   + https://docs.python.org/3/tutorial/modules.html#packages
   + https://stackoverflow.com/questions/448271/what-is-init-py-for
   + https://python-packaging.readthedocs.io/en/latest/minimal.html
+  + https://docs.python.org/3/library/__main__.html
+  + https://packaging.python.org/tutorials/distributing-packages/

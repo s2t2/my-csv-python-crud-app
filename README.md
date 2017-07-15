@@ -30,7 +30,7 @@ pip3 install -r requirements.txt
 Run the application:
 
 ```shell
-python3 my_app/crud_app.py
+python3 app/products_app.py
 ```
 
 Run tests:
