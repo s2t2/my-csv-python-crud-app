@@ -53,12 +53,10 @@ def list_products(products):
     return products
 
 def create_product(products):
-    #todo: refactor and pass product
     prompt_user_for_product_info()
     product = {"id": auto_increment_id(products) }
     for header in user_inputtable_headers():
         product[header] = input("    {0}: ".format(header))
-    # end todo refactor
     products.append(product)
     print("CREATING A PRODUCT HERE!")
     print(product)
@@ -68,11 +66,9 @@ def update_product(products):
     product_id = user_inputs_product_id()
     try:
         product = [p for p in products if p["id"] == product_id][0]
-        #todo: refactor and pass product
         prompt_user_for_product_info()
         for header in user_inputtable_headers():
             product[header] = input("    Change {0} from '{1}' to: ".format(header, product[header]))
-        # end todo refactor
         print("UPDATING A PRODUCT HERE!")
         print(product)
         return product
