@@ -17,10 +17,22 @@ git clone git@github.com:s2t2/python-csv-crud-app.git
 cd python-csv-crud-app/
 ```
 
+Install package dependencies:
+
+```shell
+pip3 install -r requirements.txt
+```
+
 ## Usage
 
 Run the application:
 
 ```shell
 python3 app/products_app.py
+```
+
+Run tests:
+
+```shell
+pytest # ...OR... pytest --pdb to drop into an interactive shell upon test failure
 ```
