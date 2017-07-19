@@ -1,4 +1,4 @@
-# My Python CSV CRUD Application
+# Python CSV CRUD Application
 
 ## Setup
 
