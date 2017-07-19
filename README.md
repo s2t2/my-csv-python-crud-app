@@ -2,9 +2,7 @@
 
 ## Setup
 
-Download the prepared CSV file from _______. Move it into the "data" directory. Its file path should be:
-
-    data/products.csv
+Download the [prepared CSV file](https://raw.githubusercontent.com/prof-rossetti/nyu-info-2335-70-201706/master/projects/crud-app/products.csv) and save it as `data/products.csv`.
 
 ## Prerequisites
 

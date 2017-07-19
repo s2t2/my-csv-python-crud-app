@@ -1,5 +1,6 @@
 import csv
 
+# can assume these headers
 headers = ["id", "name", "aisle", "department", "price"]
 
 def read_products_from_file(csv_file_path):
@@ -42,6 +43,9 @@ def prompt_user_for_product_info():
 def handle_index_error():
     print("OOPS. There are no products matching the given identifier. Try listing products to see which ones exist.")
 
+def lookup_product(product_id):
+    matching_products = [p for p in products if p["id"] == product_id]
+    return matching_products[0]
 #
 # CRUD OPERATIONS
 #
@@ -65,7 +69,7 @@ def create_product(products):
 def update_product(products):
     product_id = user_inputs_product_id()
     try:
-        product = [p for p in products if p["id"] == product_id][0]
+        product = lookup_product(product_id)
         prompt_user_for_product_info()
         for header in user_inputtable_headers():
             product[header] = input("    Change {0} from '{1}' to: ".format(header, product[header]))
@@ -78,7 +82,7 @@ def update_product(products):
 def show_product(products):
     product_id = user_inputs_product_id()
     try:
-        product = [p for p in products if p["id"] == product_id][0]
+        product = lookup_product(product_id)
         print("SHOWING A PRODUCT HERE!")
         print(product)
         return product
@@ -88,7 +92,7 @@ def show_product(products):
 def destroy_product(products):
     product_id = user_inputs_product_id()
     try:
-        product = [p for p in products if p["id"] == product_id][0]
+        product = lookup_product(product_id)
         del products[products.index(product)]
         print("DESTROYING A PRODUCT HERE!")
         print(product)
@@ -126,6 +130,7 @@ def process_unrecognized_operation():
 def run():
     file_path = "data/products.csv"
     products = read_products_from_file(csv_file_path=file_path)
+
     menu = compile_menu(products=products, username="@s2t2")
     crud_operation = input(menu).title()
     if crud_operation == "List": list_products(products)
@@ -134,6 +139,7 @@ def run():
     elif crud_operation == "Update": update_product(products)
     elif crud_operation == "Destroy": destroy_product(products)
     else: process_unrecognized_operation()
+
     write_products_to_file(products, csv_file_path=file_path)
 
 # don't run this app unless this script is executed from the command line.
