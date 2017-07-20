@@ -46,3 +46,16 @@ def test_lookup_product():
     product = lookup_product(product_id, products)
     assert int(product["id"]) == product_id
     assert product["name"] == "Overnight Diapers Size 6"
+
+#
+# Tests for list_products()
+#
+
+def test_list_products():
+    products = read_products_from_file("tests/example_products.csv")
+    assert len(products) == 8
+
+
+def test_list_products_in_empty_inventory():
+    products = read_products_from_file("tests/empty_products.csv")
+    assert len(products) == 0
