@@ -28,3 +28,10 @@ def test_read_products_from_file():
     products = read_products_from_file("tests/example_products.csv")
     assert len(products) == 8
     assert products[0]["name"] == "Robust Golden Unsweetened Oolong Tea"
+
+#
+# Tests for user_inputtable_headers()
+#
+
+def test_read_products_from_file():
+    assert user_inputtable_headers() == ["name","aisle", "department","price"]
