@@ -43,9 +43,12 @@ def prompt_user_for_product_info():
 def handle_index_error():
     print("OOPS. There are no products matching the given identifier. Try listing products to see which ones exist.")
 
-def lookup_product(product_id):
-    matching_products = [p for p in products if p["id"] == product_id]
+# param product_id should be an integer
+# param products should be a list of dictionary-like items
+def lookup_product(product_id, products):
+    matching_products = [p for p in products if int(p["id"]) == int(product_id)]
     return matching_products[0]
+
 #
 # CRUD OPERATIONS
 #
@@ -69,7 +72,7 @@ def create_product(products):
 def update_product(products):
     product_id = user_inputs_product_id()
     try:
-        product = lookup_product(product_id)
+        product = lookup_product(product_id, products)
         prompt_user_for_product_info()
         for header in user_inputtable_headers():
             product[header] = input("    Change {0} from '{1}' to: ".format(header, product[header]))
@@ -82,7 +85,7 @@ def update_product(products):
 def show_product(products):
     product_id = user_inputs_product_id()
     try:
-        product = lookup_product(product_id)
+        product = lookup_product(product_id, products)
         print("SHOWING A PRODUCT HERE!")
         print(product)
         return product
@@ -92,7 +95,7 @@ def show_product(products):
 def destroy_product(products):
     product_id = user_inputs_product_id()
     try:
-        product = lookup_product(product_id)
+        product = lookup_product(product_id, products)
         del products[products.index(product)]
         print("DESTROYING A PRODUCT HERE!")
         print(product)
