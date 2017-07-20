@@ -29,6 +29,10 @@ def test_auto_increment_id_given_empty_inventory():
     products = read_products_from_file("tests/empty_products.csv")
     assert auto_increment_id(products) == 1
 
+def test_auto_increment_id_given_reordered_inventory():
+    products = read_products_from_file("tests/reordered_products.csv")
+    assert auto_increment_id(products) == 201
+
 #
 # Tests for user_inputtable_headers()
 #
@@ -47,6 +51,21 @@ def test_lookup_product():
     assert int(product["id"]) == product_id
     assert product["name"] == "Overnight Diapers Size 6"
 
+def test_lookup_product_given_reordered_inventory():
+    products = read_products_from_file("tests/reordered_products.csv")
+    product_id = 15
+    product = lookup_product(product_id, products)
+    assert int(product["id"]) == product_id
+    assert product["name"] == "Overnight Diapers Size 6"
+
+#def test_lookup_product_given_empty_inventory():
+#    products = read_products_from_file("tests/empty_products.csv")
+#    assert lookup_product(15, products) # should raise... IndexError: list index out of range
+
+#def test_lookup_product_not_found():
+#    products = read_products_from_file("tests/example_products.csv")
+#    assert lookup_product(12345678, products) # should raise... IndexError: list index out of range
+
 #
 # Tests for list_products()
 #
@@ -54,7 +73,6 @@ def test_lookup_product():
 def test_list_products():
     products = read_products_from_file("tests/example_products.csv")
     assert len(products) == 8
-
 
 def test_list_products_in_empty_inventory():
     products = read_products_from_file("tests/empty_products.csv")
