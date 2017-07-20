@@ -28,3 +28,4 @@
   + https://python-packaging.readthedocs.io/en/latest/minimal.html
   + https://docs.python.org/3/library/__main__.html
   + https://packaging.python.org/tutorials/distributing-packages/
+  + http://pytest.readthedocs.io/en/reorganize-docs/new-docs/user/pytest_raises.html

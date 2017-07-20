@@ -1,5 +1,7 @@
 from app.products_app import *
 
+import pytest # for error-raising function .raise
+
 #
 # Tests for read_products_from_file()
 #
@@ -58,13 +60,15 @@ def test_lookup_product_given_reordered_inventory():
     assert int(product["id"]) == product_id
     assert product["name"] == "Overnight Diapers Size 6"
 
-#def test_lookup_product_given_empty_inventory():
-#    products = read_products_from_file("tests/empty_products.csv")
-#    assert lookup_product(15, products) # should raise... IndexError: list index out of range
+def test_lookup_product_given_empty_inventory():
+    products = read_products_from_file("tests/empty_products.csv")
+    with pytest.raises(IndexError):
+        lookup_product(15, products) # should raise... IndexError: list index out of range
 
-#def test_lookup_product_not_found():
-#    products = read_products_from_file("tests/example_products.csv")
-#    assert lookup_product(12345678, products) # should raise... IndexError: list index out of range
+def test_lookup_product_not_found():
+    products = read_products_from_file("tests/example_products.csv")
+    with pytest.raises(IndexError):
+        lookup_product(12345678, products) # should raise... IndexError: list index out of range
 
 #
 # Tests for list_products()
