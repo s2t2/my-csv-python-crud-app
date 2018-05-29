@@ -39,7 +39,7 @@ def test_auto_increment_id_given_reordered_inventory():
 # Tests for user_inputtable_headers()
 #
 
-def test_read_products_from_file():
+def test_user_inputtable_headers():
     assert user_inputtable_headers() == ["name","aisle", "department","price"]
 
 #
